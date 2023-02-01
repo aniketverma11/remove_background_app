@@ -1,5 +1,4 @@
 from rembg import remove
-from .models import Result
 
 def remove_background(source_image_path, destination_image_path):
     try:

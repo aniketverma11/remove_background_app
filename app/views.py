@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
+import os
 from django.shortcuts import render, redirect
 from .forms import ImageForm, ResultForm
 from .models import Image
@@ -14,9 +15,8 @@ def remove_bg(request):
             image = form.save()
             image_path = image.image.path
             image_res = remove_background(image_path,f"{image_path}.png")
-            print(" image_path ",image_path)
-            x=image_res.name.split("/remove_bg")
-            return render(request, 'remove_bg.html',{'image': x[1]})
+            image_res_path=image_res.name.split("/remove_bg")
+            return render(request, 'remove_bg.html',{'image': image_res_path[1]})
     else:
         form = ImageForm()
     return render(request, 'remove_bg.html', {'form': form})
