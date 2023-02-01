@@ -47,6 +47,7 @@
       }
       .image-container img {
         width: 100%;
+      
       }
     </style>
   </head>
@@ -60,7 +61,11 @@
       <div class="image-container">
     
         <img id="imgPreview" src="{{ image }}" alt="Image">
-  
+        {% if image %}
+          <a href="{{ image }}" class="btn-primary" download> 
+            Download Image
+          </a>
+        {% endif %}
       </div>
     </div>
     <script>
