@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Image Upload</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .upload-form {
+        background-color: #f2f2f2;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #ddd;
+        width: 500px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .upload-form h1 {
+        margin-bottom: 20px;
+      }
+      .upload-form input[type="file"] {
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        outline: none;
+      }
+      .upload-form button[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+      .image-container {
+        background-color: #f2f2f2;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #ddd;
+        width: 500px;
+        text-align: center;
+      }
+      .image-container img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form class="upload-form" action="/app/" method="post" enctype="multipart/form-data">
+        <h1>Upload Image</h1>
+        <input id="imgInput" type="file" name="image">
+        <button type="submit">Submit</button>
+      </form>
+      <div class="image-container">
+    
+        <img id="imgPreview" src="{{ image }}" alt="Image">
+  
+      </div>
+    </div>
+    <script>
+      const imgInput = document.getElementById('imgInput');
+      const img = document.getElementById('imgPreview')
+      if(imgInput){
+        imgInput.addEventListener('change',(e)=>{
+         const file = e.target.files[0];
+         if(file && img){
+          img.src = URL.createObjectURL(file)
+         }
+        })
+      }
+      
+    </script>
+  </body>
+</html>
