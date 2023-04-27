@@ -1,5 +1,4 @@
 django
 pandas
-numpy==1.23.5
-rembg==2.0.30
-removebg==0.4
+numpy
+rembg
